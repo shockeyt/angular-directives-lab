@@ -74,7 +74,8 @@ function CardsController($http){
       .then(function(response) {
         console.log(response.data);
       });
- 
+      vm.putQuestion = {};
+      showForm();   
   }
 
   // vm.questionsList = [
