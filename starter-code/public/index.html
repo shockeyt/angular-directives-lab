@@ -20,11 +20,37 @@
           <scores></scores>
         </header>
 
+
+
+        <!-- QUESTIONS LIST -->
         <section id="cards" class="container-fluid" ng-controller="CardsController as cardsController">
+
+        <!-- CREATE NEW QUESTION -->
+          <form ng-submit="cardsController.addQuestion()">
+            <div>
+              <input type="text" ng-model="cardsController.newQuestion.question" placeholder="new question">
+              <input type="submit" value="Add Question">
+            </div>
+          </form>
+          </br>
+
           <div class="row">
 
             <div class="col-sm-6 col-md-6 col-lg-4" ng-repeat="card in cardsController.questionsList" >
               <wdi-card question="{{card.question}}"></wdi-card>
+              <!-- DELETE BUTTON -->
+              <button class="delete" ng-click="cardsController.deleteQuestion(card._id)">X</button>
+              <!-- EDIT BUTTON -->
+              <button class="edit" ng-click="cardsController.showForm(card._id)">Edit</button>
+
+              <!-- UPDATE FORM   --> 
+              <form ng-show="cardsController.editForm" ng-submit="cardsController.editQuestion(card._id)">
+                <div>
+                  <input type="text" ng-model="cardsController.putQuestion.question" placeholder="edit question">
+                  <input type="submit" value="Edit Question">
+                </div>  
+              </form>    
+
             </div>
             <div class="col-sm-6 col-md-6 col-lg-4">
              <!--  <hr/> -->
