@@ -35,13 +35,16 @@
           </br>
 
           <div class="row">
-
+            <h5>Selected: {{cardsController.singleQuestion}}</h5>
             <div class="col-sm-6 col-md-6 col-lg-4" ng-repeat="card in cardsController.questionsList" >
+
               <wdi-card question="{{card.question}}"></wdi-card>
               <!-- DELETE BUTTON -->
               <button class="delete" ng-click="cardsController.deleteQuestion(card._id)">X</button>
               <!-- EDIT BUTTON -->
               <button class="edit" ng-click="cardsController.showForm(card._id)">Edit</button>
+              <!-- SELECT BUTTON -->
+              <button class="select" ng-click="cardsController.showQuestion(card._id)">ID</button>
 
               <!-- UPDATE FORM   --> 
               <form ng-show="cardsController.editForm" ng-submit="cardsController.editQuestion(card._id)">

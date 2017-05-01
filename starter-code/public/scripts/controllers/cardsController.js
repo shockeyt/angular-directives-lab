@@ -17,12 +17,17 @@ function CardsController($http){
     console.log(vm.all);
   });
 
+  vm.showQuestion = showQuestion;
+  vm.singleQuestion = {};
 
-  function showQuestion() {
+  function showQuestion(_id) {
+    console.log("id button clicked");
+    console.log(_id);
     $http
-    .get('/questions/:id')
+    .get('/questions/' + _id)
     .then(function(response) {
-      console.log(response.data);
+      console.log(response.data._id);
+      vm.singleQuestion = response.data._id;
     });
   }
 
